@@ -8,15 +8,17 @@ const LinkCardSchema = new Schema({
   },
   url: {
     type: String,
-    require: true,
   },
   description: {
     type: String,
   },
   status: {
     type: String,
-    enum: ["TO LEARN", "LEARNING", "LEARNED"],
-    default: "TO LEARN",
+    enum: ["TO LEARN", "LEARNING", "LEARNED"]
+  },
+  user:{
+    type: Schema.Types.ObjectId,
+    ref:'users'
   },
   createdAt: {
     type: Date,

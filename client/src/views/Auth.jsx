@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../assets/css/v-Auth.css";
+import "../assets/css/v-Auth.scss";
 import { Redirect } from "react-router-dom";
 //import react-bootstrap
 import Spinner from "react-bootstrap/Spinner";

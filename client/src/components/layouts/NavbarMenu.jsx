@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../../assets/css/NavbarMenu.css";
+import "../../assets/css/NavbarMenu.scss";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";

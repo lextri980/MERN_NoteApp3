@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const jwt = require('jsonwebtoken')
 const verifyToken = require('../middlewares/protectedRoute')
+const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 // @route GET /auth ------------------------------
@@ -96,7 +96,7 @@ router.post('/login', async (req, res) => {
             success: false,
             message: 'Missing username!'
         })
-    } else if (username && !password) {
+    } else if (!password) {
         return res.status(400).json({
             success: false,
             message: 'Missing password!'

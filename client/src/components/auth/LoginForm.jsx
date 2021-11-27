@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import "../../assets/css/c-Auth.css";
+import "../../assets/css/c-Auth.scss";
 import { Link } from "react-router-dom";
 import AlertMessage from "../layouts/AlertMessage";
 //import react-bootstrap
