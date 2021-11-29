@@ -117,9 +117,9 @@ router.delete("/:id", verifyToken, async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Delete successfully',
-      linkcard: deleteLinkCard
-    })
+      message: "Delete successfully",
+      linkcard: deleteLinkCard,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({
