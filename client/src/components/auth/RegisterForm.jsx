@@ -3,8 +3,7 @@ import "../../assets/css/c-Auth.scss";
 import { Link } from "react-router-dom";
 import AlertMessage from "../layouts/AlertMessage";
 //import react-bootstrap
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import {Button, Form} from 'react-bootstrap';
 //import context
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -19,10 +18,10 @@ function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
+  const { username, name, password, confirmPassword } = registerForm;
 
   const [alert, setAlert] = useState(null);
 
-  const { username, name, password, confirmPassword } = registerForm;
 
   const onChangeRegisterForm = (e) => {
     setRegisterForm({

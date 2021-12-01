@@ -2,8 +2,10 @@ import "./App.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //import views
 import Auth from "./views/Auth";
-import Dashboard from './views/Dashboard'
-import About from './views/About'
+import LinkCard  from './views/LinkCard'
+import Note from './views/Note'
+import Circle from './views/Circle'
+import Profile from './views/Profile'
 //import component
 import Landing from "./components/layouts/Landing";
 import ProtectedRoute from './components/routing/ProtectedRoute'
@@ -26,8 +28,10 @@ function App() {
             path="/register"
             render={(props) => <Auth {...props} authRoute="register" />}
           />
-          <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-          <ProtectedRoute exact path="/about" component={About} />
+          <ProtectedRoute exact path="/linkcard" component={LinkCard} />
+          <ProtectedRoute exact path="/note" component={Note} />
+          <ProtectedRoute exact path="/circle" component={Circle} />
+          <ProtectedRoute exact path="/profile" component={Profile} />
         </Switch>
       </Router>
     </AuthContextProvider>

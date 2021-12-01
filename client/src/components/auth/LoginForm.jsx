@@ -3,8 +3,7 @@ import "../../assets/css/c-Auth.scss";
 import { Link } from "react-router-dom";
 import AlertMessage from "../layouts/AlertMessage";
 //import react-bootstrap
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import {Button, Form} from "react-bootstrap";
 //import context
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -18,10 +17,10 @@ function LoginForm() {
     username: "",
     password: "",
   });
+  const { username, password } = loginForm;
 
   const [alert, setAlert] = useState(null);
 
-  const { username, password } = loginForm;
 
   const onChangeLoginForm = (e) => {
     setLoginForm({
@@ -34,12 +33,10 @@ function LoginForm() {
     e.preventDefault();
     try {
       const loginData = await loginUser(loginForm);
-      if (loginData.success) {
-        //nothing
-      } else {
+      if (!loginData.success) {
         setAlert({type: 'danger', message: loginData.message})
         setTimeout(() => setAlert(null), 5000)
-      }
+      } 
     } catch (error) {
       console.log(error);
     }

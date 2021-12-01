@@ -12,7 +12,7 @@ router.get("/", verifyToken, async (req, res) => {
       "username",
       "name",
     ]);
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       notes,
     });
@@ -47,7 +47,7 @@ router.post("/", verifyToken, async (req, res) => {
     });
 
     await newNote.save();
-    return res.status(200).json({
+    return res.status(201).json({
       success: true,
       message: "Create new note successfully",
       note: newNote,
@@ -85,7 +85,7 @@ router.put("/:id", verifyToken, async (req, res) => {
     updateNote = await Note.findOneAndUpdate(updateCondition, updateNote, {
       new: true,
     });
-    return res.status(200).json({
+    return res.status(201).json({
       success: true,
       message: "Update note successfully",
       note: updateNote,

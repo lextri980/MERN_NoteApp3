@@ -31,7 +31,7 @@ router.put("/:id", verifyToken, async (req, res) => {
       { new: true }
     );
 
-    return res.status(200).json({
+    return res.status(201).json({
       success: true,
       message: "Update profile successfully",
       profile: updateProfile,

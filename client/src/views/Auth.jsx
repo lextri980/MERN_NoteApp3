@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import "../assets/css/v-Auth.scss";
+import styles from "../assets/css/v-Auth.module.scss";
 import { Redirect } from "react-router-dom";
 //import react-bootstrap
-import Spinner from "react-bootstrap/Spinner";
+import {Spinner} from "react-bootstrap";
 //import component
 import LoginForm from "../components/auth/LoginForm";
 import RegisterForm from "../components/auth/RegisterForm";
@@ -23,7 +23,7 @@ function Auth({ authRoute }) {
         <Spinner animation="grow" variant="info" />
       </div>
     );
-  else if (isAuthenticated) return <Redirect to="/dashboard" />;
+  else if (isAuthenticated) return <Redirect to="/linkcard" />;
   else
     body = (
       <>
@@ -36,8 +36,8 @@ function Auth({ authRoute }) {
     <div className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1>App name</h1>
-          <h4>Slogan sentence</h4>
+          <h1 className={styles.h1}>Note App</h1>
+          <h4 className={styles.h4}>Save everything you want</h4>
           {body}
         </div>
       </div>

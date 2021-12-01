@@ -12,7 +12,7 @@ router.get("/", verifyToken, async (req, res) => {
       "user",
       ["username", "name"]
     );
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       linkcards,
     });
@@ -47,7 +47,7 @@ router.post("/", verifyToken, async (req, res) => {
     });
 
     await newLinkCard.save();
-    res.status(200).json({
+    return res.status(201).json({
       success: true,
       message: "Create link card successfully",
       linkcard: newLinkCard,
@@ -89,7 +89,7 @@ router.put("/:id", verifyToken, async (req, res) => {
       { new: true }
     );
 
-    res.json({
+    return res.status(201).json({
       success: true,
       message: "Update successfully!",
       linkcard: updateLinkCard,
@@ -115,7 +115,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
 
     const deleteLinkCard = await LinkCard.findOneAndDelete(deleteCondition);
 
-    res.json({
+    return res.json({
       success: true,
       message: "Delete successfully",
       linkcard: deleteLinkCard,

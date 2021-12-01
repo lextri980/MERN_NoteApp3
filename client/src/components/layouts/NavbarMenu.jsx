@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import logo from "../../assets/img/logo.jpg";
+import logo from "../../assets/img/logo.png";
 import logoutIcon from "../../assets/icon/logout.svg";
 
 function NavbarMenu() {
@@ -29,28 +29,39 @@ function NavbarMenu() {
           height="40"
           className="ml-1 mr-1"
         />
-        App name
+        Note App
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-1" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link
             className="font-weight-border text-white ml-1"
-            to="/dashboard"
+            to="/linkcard"
             as={Link}
           >
-            Dashboard
+            Card
           </Nav.Link>
           <Nav.Link
             className="font-weight-border text-white ml-1"
-            to="/about"
+            to="/note"
             as={Link}
           >
-            About
+            Note
+          </Nav.Link>
+          <Nav.Link
+            className="font-weight-border text-white ml-1"
+            to="/circle"
+            as={Link}
+          >
+            Lunch Today
           </Nav.Link>
         </Nav>
         <Nav className="mr-1">
-          <Nav.Link className="font-weight-border text-white ml-1" disabled>
+          <Nav.Link
+            className="font-weight-border text-white ml-1"
+            to="/profile"
+            as={Link}
+          >
             Welcome {name}
           </Nav.Link>
           <Button className="text-white ml-1 logout-btn" onClick={logout}>

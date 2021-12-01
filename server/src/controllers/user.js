@@ -15,7 +15,7 @@ router.get('/', verifyToken, async (req, res) => {
                 success: false,
                 message: 'User is not found'
             })
-        res.json({ success: true, user })
+        res.status(200).json({ success: true, user })
     } catch (error) {
         console.log(error)
         res.status(500).json({
@@ -70,7 +70,7 @@ router.post('/register', async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET
         )
 
-        res.json({
+        return res.status(201).json({
             success: true,
             message: 'Account is created successfully!',
             accessToken
@@ -121,7 +121,7 @@ router.post('/login', async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET
         )
 
-        res.json({
+        return res.status(200).json({
             success: true,
             message: 'Login successfully',
             accessToken
