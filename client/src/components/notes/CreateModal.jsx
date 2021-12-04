@@ -1,48 +1,48 @@
-import React, { useContext, useState, useEffect } from "react";
-import { LinkCardContext } from "../../contexts/LinkCardContext";
+import React, { useContext, useState } from "react";
+import { NoteContext } from "../../contexts/NoteContext";
 import { Modal, Button, Form } from "react-bootstrap";
-import styles from "../../assets/css/LinkCard.module.scss";
+import styles from "../../assets/css/Note.module.scss";
 
-function UpdateModal() {
+function CreateModal() {
   //Context
-  const {
-    linkCardState: { linkcard },
-    updateModal,
-    setUpdateModal,
-    updateLinkCard,
-    setToast,
-  } = useContext(LinkCardContext);
+  const { addModal, setAddModal, createNote, setToast } = useContext(NoteContext);
 
   //State
-  const [newLinkcard, setNewLinkcard] = useState(linkcard);
+  const [newNote, setNewNote] = useState({
+    title: "",
+    content: "",
+    status: "NORMAL",
+  });
 
-  useEffect(() => setNewLinkcard(linkcard), [linkcard]);
-
-  const { title, url, status } = newLinkcard;
+  const { title, content, status } = newNote;
 
   const onChange = (e) => {
-    setNewLinkcard({
-      ...newLinkcard,
+    setNewNote({
+      ...newNote,
       [e.target.name]: e.target.value,
     });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { success, message } = await updateLinkCard(newLinkcard);
-    closeModal();
-    setToast({ show: true, message, type: success ? "success" : "danger" });
+    const { success, message } = await createNote(newNote);
+    closeModal()
+    setToast({show: true, message, type: success ? 'success' : 'danger'})
   };
 
   const closeModal = () => {
-    setUpdateModal(false);
-    setNewLinkcard(linkcard);
+    setAddModal(false);
+    setNewNote({
+      title: "",
+      content: "",
+      status: "NORMAL",
+    });
   };
 
   return (
-    <Modal show={updateModal} className={styles.middle} onHide={closeModal}>
+    <Modal show={addModal} className={styles.middle} onHide={closeModal}>
       <Modal.Header>
-        <Modal.Title>Making process?</Modal.Title>
+        <Modal.Title>What do you want to learn?</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
@@ -59,23 +59,27 @@ function UpdateModal() {
           </Form.Group>
           <Form.Group className={styles.spaceInput}>
             <Form.Control
-              type="text"
-              placeholder="Tutorial url"
-              name="url"
-              value={url}
+              as="textarea"
+              rows={5}
+              placeholder="Content"
+              name="content"
+              value={content}
               onChange={onChange}
+              required
             />
           </Form.Group>
           <Form.Group className={styles.spaceInput}>
             <Form.Control
-              as="select"
+              as='select'
+              placeholder="Status"
               name="status"
               value={status}
               onChange={onChange}
+              required
             >
-              <option value="TO LEARN">TO LEARN</option>
-              <option value="LEARNING">LEARNING</option>
-              <option value="LEARNED">LEARNED</option>
+              <option value="NORMAL">Normal</option>
+              <option value="HIGHLIGHT">Highlight</option>
+              <option value="IMPORTANT">Important</option>
             </Form.Control>
           </Form.Group>
         </Modal.Body>
@@ -84,7 +88,7 @@ function UpdateModal() {
             Cancel
           </Button>
           <Button variant="info" type="submit">
-            Update
+            Submit
           </Button>
         </Modal.Footer>
       </Form>
@@ -92,4 +96,5 @@ function UpdateModal() {
   );
 }
 
-export default UpdateModal;
+export default CreateModal;
+

@@ -16,10 +16,11 @@ export const LinkCardContext = createContext();
 function LinkCardContextProvider({ children }) {
   const [linkCardState, dispatch] = useReducer(LinkCardReducer, {
     linkcardsLoading: true,
-    linkcard: null,
     linkcards: [],
+    linkcard: null,
   });
 
+  //Layout State
   const [addModal, setAddModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
   const [toast, setToast] = useState({

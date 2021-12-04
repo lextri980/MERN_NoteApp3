@@ -9,9 +9,6 @@ const LinkCardSchema = new Schema({
   url: {
     type: String,
   },
-  description: {
-    type: String,
-  },
   status: {
     type: String,
     enum: ["TO LEARN", "LEARNING", "LEARNED"]

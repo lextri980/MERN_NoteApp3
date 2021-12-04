@@ -1,42 +1,42 @@
 import React, { useContext, useState, useEffect } from "react";
-import { LinkCardContext } from "../../contexts/LinkCardContext";
+import { NoteContext } from "../../contexts/NoteContext";
 import { Modal, Button, Form } from "react-bootstrap";
-import styles from "../../assets/css/LinkCard.module.scss";
+import styles from "../../assets/css/Note.module.scss";
 
 function UpdateModal() {
   //Context
   const {
-    linkCardState: { linkcard },
+    noteState: { note },
     updateModal,
     setUpdateModal,
-    updateLinkCard,
+    updateNote,
     setToast,
-  } = useContext(LinkCardContext);
+  } = useContext(NoteContext);
 
   //State
-  const [newLinkcard, setNewLinkcard] = useState(linkcard);
+  const [newNote, setNewNote] = useState(note);
 
-  useEffect(() => setNewLinkcard(linkcard), [linkcard]);
+  useEffect(() => setNewNote(note), [note]);
 
-  const { title, url, status } = newLinkcard;
+  const { title, content, status } = newNote;
 
   const onChange = (e) => {
-    setNewLinkcard({
-      ...newLinkcard,
+    setNewNote({
+      ...newNote,
       [e.target.name]: e.target.value,
     });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { success, message } = await updateLinkCard(newLinkcard);
+    const { success, message } = await updateNote(newNote);
     closeModal();
     setToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   const closeModal = () => {
     setUpdateModal(false);
-    setNewLinkcard(linkcard);
+    setNewNote(note);
   };
 
   return (
@@ -60,10 +60,11 @@ function UpdateModal() {
           <Form.Group className={styles.spaceInput}>
             <Form.Control
               type="text"
-              placeholder="Tutorial url"
-              name="url"
-              value={url}
+              placeholder="Content"
+              name="content"
+              value={content}
               onChange={onChange}
+              required
             />
           </Form.Group>
           <Form.Group className={styles.spaceInput}>
@@ -73,9 +74,9 @@ function UpdateModal() {
               value={status}
               onChange={onChange}
             >
-              <option value="TO LEARN">TO LEARN</option>
-              <option value="LEARNING">LEARNING</option>
-              <option value="LEARNED">LEARNED</option>
+              <option value="NORMAL">NORMAL</option>
+              <option value="HIGHLIGHT">HIGHLIGHT</option>
+              <option value="IMPORTANT">IMPORTANT</option>
             </Form.Control>
           </Form.Group>
         </Modal.Body>

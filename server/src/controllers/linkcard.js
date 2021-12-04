@@ -29,7 +29,7 @@ router.get("/", verifyToken, async (req, res) => {
 // @desc Create link card
 // @access Private
 router.post("/", verifyToken, async (req, res) => {
-  const { title, description, url, status } = req.body;
+  const { title, url, status } = req.body;
   //Validation
   if (!title) {
     return res.status(400).json({
@@ -40,7 +40,6 @@ router.post("/", verifyToken, async (req, res) => {
   try {
     const newLinkCard = new LinkCard({
       title,
-      description,
       url: url.startsWith("http://") ? url : `http://${url}`,
       status: status || "TO LEARN",
       user: req.userId,
@@ -65,7 +64,7 @@ router.post("/", verifyToken, async (req, res) => {
 // @desc Update link card
 // @access Private
 router.put("/:id", verifyToken, async (req, res) => {
-  const { title, description, url, status } = req.body;
+  const { title, url, status } = req.body;
   //Validation
   if (!title) {
     return res.status(400).json({
@@ -76,7 +75,6 @@ router.put("/:id", verifyToken, async (req, res) => {
   try {
     let updateLinkCard = {
       title,
-      description: description || "",
       url: (url.startsWith("http://") ? url : `http://${url}`) || "",
       status: status || "TO LEARN",
     };
@@ -129,4 +127,6 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
-module.exports = router;
+// module.exports = router;
+module.exports = router
+

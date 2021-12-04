@@ -10,12 +10,11 @@ function CreateModal() {
   //State
   const [newLinkcard, setNewLinkcard] = useState({
     title: "",
-    description: "",
     url: "",
     status: "TO LEARN",
   });
 
-  const { title, description, url } = newLinkcard;
+  const { title, url } = newLinkcard;
 
   const onChange = (e) => {
     setNewLinkcard({
@@ -62,20 +61,11 @@ function CreateModal() {
           <Form.Group className={styles.spaceInput}>
             <Form.Control
               type="text"
-              placeholder="Description"
-              name="description"
-              value={description}
-              onChange={onChange}
-              required
-            />
-          </Form.Group>
-          <Form.Group className={styles.spaceInput}>
-            <Form.Control
-              type="text"
               placeholder="Tutorial url"
               name="url"
               value={url}
               onChange={onChange}
+              required
             />
           </Form.Group>
         </Modal.Body>
