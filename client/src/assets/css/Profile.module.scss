@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+
+  .profile {
+    width: 25rem;
+    height: 20rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    h2 {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .form {
+      margin: 10px auto;
+      width: 20rem;
+
+      .formInput {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          margin-right: 10px;
+        }
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

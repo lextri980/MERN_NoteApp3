@@ -17,12 +17,13 @@ function Note() {
       user: { name },
     },
   } = useContext(AuthContext);
+
   const {
     noteState: { noteLoading, notes, note },
     getNote,
     setAddModal,
-    toast:{type, message, show},
-    setToast
+    toast: { type, message, show },
+    setToast,
   } = useContext(NoteContext);
 
   useEffect(() => getNote(), []);
@@ -78,7 +79,7 @@ function Note() {
     <>
       {body}
       <CreateModal />
-      {note !== null && <UpdateModal/>}
+      {note !== null && <UpdateModal />}
 
       {/* Show Toast */}
       <Toast
@@ -91,7 +92,7 @@ function Note() {
           width: "250px",
           padding: "7px 10px",
         }}
-        onClose={setToast.bind(this, {show: false, type: null, message: ''})}
+        onClose={setToast.bind(this, { show: false, type: null, message: "" })}
         delay={5000}
         autohide
       >

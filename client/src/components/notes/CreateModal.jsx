@@ -42,7 +42,7 @@ function CreateModal() {
   return (
     <Modal show={addModal} className={styles.middle} onHide={closeModal}>
       <Modal.Header>
-        <Modal.Title>What do you want to learn?</Modal.Title>
+        <Modal.Title>What do you want to note?</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
