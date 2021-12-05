@@ -14,14 +14,12 @@ import ProtectedRoute from "./components/routing/ProtectedRoute";
 import AuthContextProvider from "./contexts/AuthContext";
 import LinkCardContextProvider from "./contexts/LinkCardContext";
 import NoteContextProvider from "./contexts/NoteContext";
-import ProfileContextProvider from "./contexts/ProfileContext";
 
 function App() {
   return (
     <AuthContextProvider>
       <LinkCardContextProvider>
         <NoteContextProvider>
-          <ProfileContextProvider>
             <Router>
               <Switch>
                 <Route exact path="/" component={Landing} />
@@ -42,7 +40,6 @@ function App() {
                 <ProtectedRoute exact path="/profile" component={Profile} />
               </Switch>
             </Router>
-          </ProfileContextProvider>
         </NoteContextProvider>
       </LinkCardContextProvider>
     </AuthContextProvider>

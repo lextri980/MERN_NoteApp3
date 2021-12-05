@@ -14,13 +14,15 @@
       justify-content: center;
       align-items: center;
       font-size: 30px;
-      color: rgb(163, 163, 163);
+      color: rgb(255, 255, 255);
       border-radius: 10px;
-      width: 10rem;
-      height: 10rem;
+      width: 11rem;
+      height: 11rem;
       background-color: rgb(142, 255, 170);
       transition: transform 0.5s;
-      margin: 30px;
+      margin: 30px 30px 0;
+      cursor: default;
+      text-align: center;
 
       &:hover {
         transform: scale(1.25);
@@ -29,6 +31,12 @@
   }
   
   .btn {
-    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    .btnElement{
+      margin: 20px;
+    }
   }
 }

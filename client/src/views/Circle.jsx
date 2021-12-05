@@ -4,39 +4,70 @@ import SingleCard from "../components/circle/SingleCard";
 import { Button } from "react-bootstrap";
 
 function Circle() {
+  //State
   const [randomNumber, setRandomNumber] = useState(0);
+  const [showBtn, setShowBtn] = useState(false);
 
   const foods = [
-    'Bun ca',
+    "Bun ca",
     "Bun bo",
     "Bun Hue",
     "Pho",
     "Xoi",
-    "Xien ban",
-    "Link Cute",
+    "Com ga",
+    "Chao suon",
     "Circle K",
     "Banh mi",
-    "Lau Gogi",
-    "Lau Wang",
-    "Lau Phan",
+    "Lau Gogi (For richkid)",
+    "Lau Wang (For richkid)",
+    "Lau Phan (For richkid)",
   ];
-
   const onClick = () => {
     const randomNumber = Math.floor(Math.random() * foods.length);
     setRandomNumber(randomNumber);
-    console.log(foods[randomNumber]);
+    setShowBtn(true);
   };
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.body}>
-        <SingleCard foods={foods} />
+  let body = null;
+
+  if (showBtn === false) {
+    body = (
+      <div className={styles.container}>
+        <div className={styles.body}>
+          <SingleCard foods={foods} />
+        </div>
+        <div className={styles.btn}>
+          <Button
+            onClick={onClick}
+            className={styles.btnElement}
+            variant="secondary"
+          >
+            Let me choose for your
+          </Button>
+        </div>
       </div>
-      <div className={styles.btn}>
-        <Button onClick={onClick}>Let me choose for your</Button>
+    );
+  } else if (showBtn === true) {
+    body = (
+      <div className={styles.container}>
+        <div className={styles.body}>
+          <SingleCard foods={foods} />
+        </div>
+        <div className={styles.btn}>
+          <Button
+            onClick={onClick}
+            className={styles.btnElement}
+            variant="secondary"
+          >
+            Let me choose for your
+          </Button>
+          <Button variant="info">{foods[randomNumber]}</Button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return <>{body}</>;
 }
 
 export default Circle;

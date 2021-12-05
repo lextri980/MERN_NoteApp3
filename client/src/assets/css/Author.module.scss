@@ -13,20 +13,20 @@
     background-color: #56CC9D;
     color: white;
     width: 30rem;
-    height: 6rem;
+    height: 13rem;
     padding: 20px;
     border-radius: 10px;
+
+    strong{
+      margin-top: 10px;
+    }
+
+    .p{
+      margin-top: 15px;
+    }
   }
 
-
-  a{
-    margin: 5px 0;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-
-    &:hover{
-      font-size: 18px;
-    }
+  .btn{
+    margin-top: 30px;
   }
 }

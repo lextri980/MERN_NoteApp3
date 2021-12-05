@@ -4,7 +4,6 @@ import styles from "../assets/css/Profile.module.scss";
 import UpdateModal from "../components/profiles/UpdateModal";
 // import clsx from 'clsx'
 import { AuthContext } from "../contexts/AuthContext";
-import { ProfileContext } from "../contexts/ProfileContext";
 import usernameIcon from "../assets/icon/username.png";
 import nameIcon from "../assets/icon/name.png";
 import passwordIcon from "../assets/icon/password.png";
@@ -15,14 +14,10 @@ function Profile() {
     authState: {
       user: { username, name },
     },
+    setUpdateModal,
+    toast: { type, message, show },
+    setToast,
   } = useContext(AuthContext);
-
-  // const {
-  //   profileState: { profile },
-  //   setUpdateModal,
-  //   toast: { type, message, show },
-  //   setToast,
-  // } = useContext(ProfileContext);
 
   const body = (
     <div className={styles.container}>
@@ -46,7 +41,9 @@ function Profile() {
               disabled
             />
           </Form.Group>
-          <Button className={styles.btn} onClick={UpdateModal.bind(this, true)}>Update</Button>
+          <Button className={styles.btn} onClick={setUpdateModal.bind(this,true)}>
+            Update
+          </Button>
         </Form>
       </div>
     </div>
@@ -55,10 +52,10 @@ function Profile() {
   return (
     <>
       {body}
-      {/* <UpdateModal/> */}
+      <UpdateModal />
 
       {/* Show Toast */}
-      {/* <Toast
+      <Toast
         className={`bg-${type} text-white`}
         show={show}
         style={{
@@ -73,7 +70,7 @@ function Profile() {
         autohide
       >
         <strong>{message}</strong>
-      </Toast> */}
+      </Toast>
     </>
   );
 }
